@@ -1,0 +1,306 @@
+<title>Jarvis — Zasady</title>
+<style>
+  :root {
+    --bg: #f5f7f6;
+    --surface: #ffffff;
+    --surface-2: #eef2f1;
+    --border: #d8e0de;
+    --text: #0e1a1f;
+    --text-dim: #4d6067;
+    --accent: #0d7d8c;
+    --accent-soft: #e3f4f3;
+    --mono: #3a4c52;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #071216;
+      --surface: #0d1e23;
+      --surface-2: #112a30;
+      --border: #1d3a41;
+      --text: #dbeaec;
+      --text-dim: #86a3a9;
+      --accent: #52d8d0;
+      --accent-soft: #10333330;
+      --mono: #9fc3c7;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #071216;
+    --surface: #0d1e23;
+    --surface-2: #112a30;
+    --border: #1d3a41;
+    --text: #dbeaec;
+    --text-dim: #86a3a9;
+    --accent: #52d8d0;
+    --accent-soft: #10333330;
+    --mono: #9fc3c7;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    line-height: 1.65;
+    padding-inline: 20px;
+    padding-block: 32px;
+  }
+  a { color: var(--accent); }
+
+  .doc { max-width: 720px; margin: 0 auto; }
+
+  header.top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+  }
+  .brand {
+    font-family: "Sora", "Segoe UI", sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+  .brand span { color: var(--accent); }
+  .meta {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    text-align: right;
+  }
+
+  nav.tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  nav.tabs a {
+    text-decoration: none;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 14px;
+    background: var(--surface);
+  }
+  nav.tabs a:hover { color: var(--accent); border-color: var(--accent); }
+
+  section.doc-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px clamp(18px, 4vw, 36px);
+    margin-bottom: 24px;
+  }
+
+  h1.doc-title {
+    font-family: "Sora", "Segoe UI", sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0 0 6px;
+  }
+  p.summary {
+    color: var(--text-dim);
+    margin: 0 0 28px;
+    max-width: 65ch;
+  }
+
+  .clause { display: flex; gap: 16px; padding-block: 16px; border-top: 1px solid var(--border); }
+  .clause:first-of-type { border-top: none; padding-top: 0; }
+  .clause-num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    color: var(--mono);
+    font-size: 0.85rem;
+    flex: 0 0 34px;
+    padding-top: 3px;
+  }
+  .clause-body h2 {
+    font-family: "Sora", "Segoe UI", sans-serif;
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  .clause-body p { margin: 0 0 10px; max-width: 65ch; }
+  .clause-body p:last-child { margin-bottom: 0; }
+  .clause-body ul { margin: 8px 0 10px; padding-left: 20px; max-width: 62ch; }
+  .clause-body li { margin-bottom: 4px; }
+  code.k {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 0.86em;
+  }
+
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 12px; }
+  .badge {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+
+  footer.contact {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    padding-top: 12px;
+  }
+  footer.contact a { color: var(--accent); }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="doc">
+  <header class="top">
+    <div class="brand">J.A.R.V.I.S<span>.</span></div>
+    <div class="meta">Osobisty asystent · dokument obowiązuje od 17.09.2026</div>
+  </header>
+
+  <nav class="tabs">
+    <a href="#privacy">Polityka prywatności</a>
+    <a href="#terms">Regulamin</a>
+  </nav>
+
+  <section class="doc-section" id="privacy">
+    <h1 class="doc-title">Polityka prywatności</h1>
+    <p class="summary">Jarvis to prywatna aplikacja desktopowa jednego użytkownika (Alan Skowroński), nieoferowana jako usługa publiczna. Ten dokument opisuje, jakie dane aplikacja odczytuje z podłączonych kont (w tym TikTok) i co się z nimi dzieje.</p>
+
+    <div class="clause">
+      <div class="clause-num">01</div>
+      <div class="clause-body">
+        <h2>Kto przetwarza dane</h2>
+        <p>Aplikację prowadzi i wykorzystuje wyłącznie <strong>Alan Skowroński</strong>, do własnego, osobistego użytku. Jarvis nie jest dystrybuowany publicznie ani oferowany innym użytkownikom jako usługa.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">02</div>
+      <div class="clause-body">
+        <h2>Jakie dane TikTok są odczytywane</h2>
+        <p>Po ręcznym podłączeniu konta TikTok w Ustawieniach, za zgodą użytkownika (OAuth), aplikacja odczytuje wyłącznie:</p>
+        <div class="badge-row">
+          <span class="badge">user.info.basic</span>
+          <span class="badge">user.info.profile</span>
+          <span class="badge">user.info.stats</span>
+          <span class="badge">video.list</span>
+        </div>
+        <ul>
+          <li>podstawowe dane profilu (nazwa, identyfikator, avatar),</li>
+          <li>statystyki konta (liczba obserwujących, polubień),</li>
+          <li>listę własnych filmów i ich publiczne statystyki (wyświetlenia, polubienia, komentarze).</li>
+        </ul>
+        <p>Dostęp jest <strong>wyłącznie do odczytu</strong>. Aplikacja nie publikuje, nie edytuje, nie usuwa i nie komentuje w imieniu użytkownika, nie obserwuje ani nie polubia niczego automatycznie.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">03</div>
+      <div class="clause-body">
+        <h2>Jak dane są wykorzystywane</h2>
+        <p>Odczytane dane są używane wyłącznie do odpowiadania na polecenia użytkownika w rozmowie z Jarvisem (np. „jakie mam ostatnie filmy?"). Fragmenty wyników mogą zostać przekazane do wybranego dostawcy AI (Google Gemini lub OpenAI) jako część odpowiedzi na konkretne polecenie — patrz punkt 05.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">04</div>
+      <div class="clause-body">
+        <h2>Przechowywanie danych</h2>
+        <p>Tokeny dostępu TikTok i inne dane logowania są przechowywane <strong>wyłącznie lokalnie</strong>, na dysku urządzenia użytkownika, w postaci zaszyfrowanej (Windows <code class="k">safeStorage</code> / DPAPI). Nie istnieje żaden serwer operatora aplikacji, na który dane byłyby wysyłane, zbierane ani archiwizowane.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">05</div>
+      <div class="clause-body">
+        <h2>Udostępnianie danych trzecim stronom</h2>
+        <p>Dane z TikToka nie są sprzedawane, wynajmowane ani udostępniane żadnym podmiotom reklamowym czy analitycznym. Jedynym miejscem, gdzie fragment danych może zostać przekazany dalej, jest zapytanie do wybranego przez użytkownika dostawcy modelu językowego (Google Gemini lub OpenAI) — wyłącznie gdy użytkownik sam o to poprosi w rozmowie, i tylko w zakresie potrzebnym do odpowiedzi.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">06</div>
+      <div class="clause-body">
+        <h2>Kontrola i usuwanie danych</h2>
+        <p>Użytkownik może w każdej chwili odłączyć konto TikTok w Ustawieniach aplikacji — usuwa to lokalnie zapisane tokeny. Dostęp można też cofnąć bezpośrednio w ustawieniach konta TikTok (Zarządzanie aplikacjami trzecich stron).</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">07</div>
+      <div class="clause-body">
+        <h2>Dzieci</h2>
+        <p>Aplikacja nie jest kierowana do dzieci i nie jest przeznaczona do świadomego zbierania danych osób poniżej 13 roku życia.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">08</div>
+      <div class="clause-body">
+        <h2>Zmiany dokumentu</h2>
+        <p>Ta polityka może zostać zaktualizowana wraz z rozwojem aplikacji. Data obowiązywania widoczna jest w nagłówku strony.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="doc-section" id="terms">
+    <h1 class="doc-title">Regulamin korzystania</h1>
+    <p class="summary">Zasady korzystania z Jarvisa — osobistego, jednoużytkownikowego asystenta desktopowego.</p>
+
+    <div class="clause">
+      <div class="clause-num">01</div>
+      <div class="clause-body">
+        <h2>Charakter usługi</h2>
+        <p>Jarvis to prywatne narzędzie desktopowe do osobistego użytku, uruchamiane lokalnie na komputerze użytkownika. Nie jest ofertą publiczną, nie ma rejestracji ani wielu kont użytkowników.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">02</div>
+      <div class="clause-body">
+        <h2>Odpowiedzialność użytkownika</h2>
+        <p>Korzystając z integracji TikTok w Jarvisie, użytkownik pozostaje w pełni odpowiedzialny za przestrzeganie <a href="https://www.tiktok.com/legal/page/row/terms-of-service/pl" target="_blank" rel="noopener">Regulaminu TikToka</a> oraz zasad korzystania z TikTok for Developers.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">03</div>
+      <div class="clause-body">
+        <h2>Brak gwarancji</h2>
+        <p>Aplikacja dostarczana jest „tak jak jest", bez gwarancji nieprzerwanego działania, dokładności danych czy dostępności integracji z zewnętrznymi usługami (TikTok, Google, OpenAI, Trello). Dostępność funkcji zależy od limitów i zasad tych usług, na które operator nie ma wpływu.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">04</div>
+      <div class="clause-body">
+        <h2>Ograniczenie odpowiedzialności</h2>
+        <p>Operator nie ponosi odpowiedzialności za szkody wynikłe z korzystania z aplikacji, w tym z ewentualnych błędów w danych odczytanych z podłączonych kont lub przerw w działaniu usług zewnętrznych.</p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-num">05</div>
+      <div class="clause-body">
+        <h2>Zmiany regulaminu</h2>
+        <p>Regulamin może być aktualizowany wraz z rozwojem aplikacji. Obowiązuje wersja opublikowana pod tym adresem.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact">
+    Kontakt: <a href="mailto:alan.skowronski999@gmail.com">alan.skowronski999@gmail.com</a>
+  </footer>
+</div>
